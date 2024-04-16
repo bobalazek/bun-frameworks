@@ -31,6 +31,10 @@ const frameworks = [
     name: 'fastify',
     file: 'fastify.js',
   },
+  {
+    name: 'koa',
+    file: 'koa.js',
+  },
 ];
 const requestsCount = 200000;
 const requestDurationsMap = {};
