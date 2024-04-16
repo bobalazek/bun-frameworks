@@ -1,4 +1,6 @@
-import { average, median, mean, nthPercentile, standardDeviation } from './utils.js';
+import { average, median, mean, nthPercentile, standardDeviation, exportMdTable } from './utils.js';
+
+const argv = process.argv.slice(2);
 
 const frameworks = [
   {
@@ -91,15 +93,15 @@ console.log('========== Results ==========');
 const table = [
   [
     'Framework',
-    'Average Reqests Per Second',
+    'Average RPS',
     'Cold Start (ms)',
     'Average (ms)',
     'Median (ms)',
     'Mean (ms)',
-    '75th Percentile (ms)',
-    '95th Percentile (ms)',
-    '99th Percentile (ms)',
-    'Standard Deviation (ms)'
+    '75th perc. (ms)',
+    '95th perc. (ms)',
+    '99th perc. (ms)',
+    'SD (ms)'
   ],
 ];
 
@@ -115,19 +117,19 @@ for (const framework of frameworks) {
   const percentile75 = nthPercentile(durations, 75);
   const percentile95 = nthPercentile(durations, 95);
   const percentile99 = nthPercentile(durations, 99);
-  const stdDev = standardDeviation(durations);
+  const sdDev = standardDeviation(durations);
 
   table.push([
     framework.name,
     rps.toFixed(0),
-    coldStartDuration.toFixed(4),
-    avg.toFixed(4),
-    med.toFixed(4),
-    mea.toFixed(4),
-    percentile75.toFixed(4),
-    percentile95.toFixed(4),
-    percentile99.toFixed(4),
-    stdDev.toFixed(4),
+    coldStartDuration.toFixed(3),
+    avg.toFixed(3),
+    med.toFixed(3),
+    mea.toFixed(3),
+    percentile75.toFixed(3),
+    percentile95.toFixed(3),
+    percentile99.toFixed(3),
+    sdDev.toFixed(3),
   ]);
 }
 
@@ -138,3 +140,8 @@ table.sort((a, b) => {
 
 console.table(table);
 
+if (argv.includes('--export-md-table')) {
+  console.log('Exporting the results to a markdown table ...');
+  const mdTable = exportMdTable(table);
+  console.log(mdTable);
+}

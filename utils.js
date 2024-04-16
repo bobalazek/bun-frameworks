@@ -29,3 +29,18 @@ export const standardDeviation = (values) => {
   const sum = values.reduce((acc, value) => acc + Math.pow(value - avg, 2), 0);
   return Math.sqrt(sum / values.length);
 }
+
+// Export helpers
+export const exportMdTable = (table) => {
+  const rows = [];
+  for (let i = 0; i < table.length; i++) {
+    const row = table[i];
+    rows.push(`| ${row.join(' | ')} |`);
+
+    if (i === 0) {
+      rows.push(`| ${row.map(() => '---').join(' | ')} |`);
+    }
+  }
+
+  return rows.join('\n');
+}
