@@ -13,6 +13,7 @@ The accompanying code for my [🧄 Bun Framework Performances](https://bobalazek
 The results are in the blog post, but here they are for reference:
 
 │ Framework │ Average Reqests Per Second │ Cold Start (ms) │ Average (ms) │ Median (ms) │ Mean (ms) │ 75th Percentile (ms) │ 95th Percentile (ms) │ 99th Percentile (ms) │ Standard Deviation (ms) │
+| --------- | -------------------------- | --------------- | ------------- | ------------ | ---------- | -------------------- | -------------------- | -------------------- | ----------------------- |
 │ elysiajs  │ 28472                      │ 9.6227          │ 0.0351       │ 0.0324      │ 0.0351    │ 0.0352               │ 0.0451               │ 0.0716               │ 0.0259                  │
 │ bun       │ 28145                      │ 23.4625         │ 0.0355       │ 0.0327      │ 0.0355    │ 0.0357               │ 0.0467               │ 0.0734               │ 0.0253                  │
 │ hono      │ 28087                      │ 8.2647          │ 0.0356       │ 0.0329      │ 0.0356    │ 0.0357               │ 0.0460               │ 0.0732               │ 0.0250                  │
