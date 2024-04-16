@@ -1,4 +1,4 @@
-import { average, median, mean, nthPercentile, standardDeviation, exportMdTable } from './utils.js';
+import { average, median, mean, nthPercentile, standardDeviation, exportMdTable, exportHtmlTable } from './utils.js';
 
 const argv = process.argv.slice(2);
 
@@ -149,3 +149,11 @@ if (argv.includes('--export-md-table')) {
   const mdTable = exportMdTable(table);
   console.log(mdTable);
 }
+
+if (argv.includes('--export-html-table')) {
+  console.log('Exporting the results to an HTML table ...');
+  const htmlTable = exportHtmlTable(table);
+  console.log(htmlTable);
+}
+
+console.log('========== Done ==========');

@@ -25,4 +25,4 @@ The results are in the blog post, but here they are for reference:
 
 ## Notes
 
-I did actually also try `hyper-express`, but that does not seem to be compatible with Bun. At least not yet.
+I also tried `hyper-express`, but that does not seem to be compatible with Bun. At least not at the time of doing this benchmark.

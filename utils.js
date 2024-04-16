@@ -44,3 +44,21 @@ export const exportMdTable = (table) => {
 
   return rows.join('\n');
 }
+
+export const exportHtmlTable = (table) => {
+  const headRow = table[0];
+  const bodyRows = [];
+  for (let i = 0; i < table.length; i++) {
+    if (i === 0) {
+      continue;
+    }
+
+    const row = table[i];
+    bodyRows.push(`<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`);
+  }
+
+  return `<table>
+  <thead><tr>${headRow.map(cell => `<td>${cell}</td>`).join('')}</tr></thead>
+  <tbody>${bodyRows.join('')}</tbody>
+</table>`;
+}
