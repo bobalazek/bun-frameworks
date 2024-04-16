@@ -1,0 +1,20 @@
+{
+  "name": "bun-frameworks",
+  "module": "benchmark.js",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@hattip/adapter-bun": "^0.0.45",
+    "@hattip/core": "^0.0.45",
+    "elysia": "^1.0.13",
+    "express": "^4.19.2",
+    "fastify": "^4.26.2",
+    "h3": "^1.11.1",
+    "hono": "^4.2.4"
+  }
+}
