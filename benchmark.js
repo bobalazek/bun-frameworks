@@ -35,6 +35,10 @@ const frameworks = [
     name: 'koa',
     file: 'koa.js',
   },
+  {
+    name: 'hapi',
+    file: 'hapi.js',
+  },
 ];
 const requestsCount = 200000;
 const requestDurationsMap = {};

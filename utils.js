@@ -58,7 +58,7 @@ export const exportHtmlTable = (table) => {
   }
 
   return `<table>
-  <thead><tr>${headRow.map(cell => `<td>${cell}</td>`).join('')}</tr></thead>
+  <thead><tr>${headRow.map(cell => `<th>${cell}</th>`).join('')}</tr></thead>
   <tbody>${bodyRows.join('')}</tbody>
 </table>`;
 }
