@@ -30,6 +30,17 @@ export const standardDeviation = (values) => {
   return Math.sqrt(sum / values.length);
 }
 
+export const getMinAndMaxValuesForTable = (table) => {
+  const values = table.slice(1).map(row => {
+    return row.map(cell => parseFloat(cell));
+  });
+
+  return {
+    min: Math.min(...values),
+    max: Math.max(...values),
+  };
+}
+
 // Export helpers
 export const exportMdTable = (table) => {
   const rows = [];
@@ -48,13 +59,16 @@ export const exportMdTable = (table) => {
 export const exportHtmlTable = (table) => {
   const headRow = table[0];
   const bodyRows = [];
-  for (let i = 0; i < table.length; i++) {
-    if (i === 0) {
-      continue;
-    }
-
+  for (let i = 1; i < table.length; i++) {
     const row = table[i];
-    bodyRows.push(`<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`);
+
+    let rowString = '<tr>';
+    for (const cell of row) {
+      rowString += `<td>${cell}</td>`;
+    }
+    rowString += '</tr>';
+
+    bodyRows.push(rowString);
   }
 
   return `<table>

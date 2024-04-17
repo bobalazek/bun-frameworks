@@ -2,6 +2,8 @@ import { average, median, mean, nthPercentile, standardDeviation, exportMdTable,
 
 const argv = process.argv.slice(2);
 
+const serverWaitTimeoutMs = 1000;
+
 const frameworks = [
   {
     name: 'bun',
@@ -40,7 +42,7 @@ const frameworks = [
     file: 'hapi.js',
   },
 ];
-const requestsCount = 200000;
+const requestsCount = 100000;
 const requestDurationsMap = {};
 
 console.log('========== Starting the benchmark ... ==========');
@@ -68,7 +70,7 @@ for (let framework of frameworks) {
   console.log(`Spawned server process with PID: ${child.pid}. Wait 2 seconds to ensure the server is running ...`);
 
   await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
+    setTimeout(resolve, serverWaitTimeoutMs);
   });
 
   console.log('Server is running. Starting the benchmark ...')
@@ -87,11 +89,6 @@ for (let framework of frameworks) {
   console.log(`Benchmarking for "${framework.name}" finished. Terminating the server process ...`);
   process.kill(child.pid);
   currentServerPid = null;
-
-  // Make sure the server is terminated before starting the next one
-  await new Promise((resolve) => {
-    setTimeout(resolve, 1000);
-  });
 }
 
 console.log('========== Benchmark finished ==========');
@@ -102,14 +99,14 @@ const table = [
   [
     'Framework',
     'Average RPS',
-    'Cold Start (ms)',
+    'Cold start (ms)',
     'Average (ms)',
     'Median (ms)',
     'Mean (ms)',
     '75th perc. (ms)',
     '95th perc. (ms)',
     '99th perc. (ms)',
-    'SD (ms)'
+    'Std. (ms)'
   ],
 ];
 
