@@ -1,6 +1,6 @@
 # Bun Frameworks
 
-The accompanying code for my [🧄 Bun Framework Performances](https://bobalazek.com/blog/0004-bun-frameworks) post on my blog.
+The accompanying code for my [🧄 Bun Frameworks](https://bobalazek.com/blog/0004-bun-frameworks) post on my blog.
 
 ## Installation
 
