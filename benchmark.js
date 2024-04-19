@@ -18,6 +18,10 @@ const frameworks = [
     file: 'hono.js',
   },
   {
+    name: 'baojs',
+    file: 'baojs.js',
+  },
+  {
     name: 'h3',
     file: 'h3.js',
   },
